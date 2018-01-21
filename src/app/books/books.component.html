@@ -1,0 +1,39 @@
+<h2>Add a Book</h2>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="d-flex justify-content-center thumb" [ngClass]="{active: picture.value!=''}">
+      <div class="cont-img">
+        <img [src]="picture.value" alt="" class="img-responsive">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="title" formControlName="title" placeholder="Title" #title required>
+    <div *ngIf="bookForm.controls['title'].errors && bookForm.controls['title'].touched" class="error-msg">
+      <div [hidden]="!bookForm.controls['title'].errors.required" class="alert alert-danger" role="alert">Title is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="picture" formControlName="picture" #picture placeholder="Picture (Image url from internet)">
+  </div>  
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+      <div class="form-group">
+        <input type="text" class="form-control" id="author" formControlName="author" placeholder="Author">
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <div class="form-group">
+        <input type="text" class="form-control" id="price" formControlName="price" placeholder="Price (€)">
+        <div *ngIf="bookForm.controls['price'].errors && bookForm.controls['price'].touched" class="error-msg">
+          <div [hidden]="!bookForm.controls['price'].errors.required" class="alert alert-danger" role="alert">Price is required.</div>
+          <div [hidden]="!bookForm.controls['price'].errors.pattern" class="alert alert-danger" role="alert">Price must be a number.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <textarea name="description" class="form-control" id="description" formControlName="description" placeholder="Description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success ml-auto" [disabled]="!bookForm.valid">Save</button>
+</form>

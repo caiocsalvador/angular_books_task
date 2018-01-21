@@ -1,0 +1,14 @@
+<h2 #anchor>{{ book.title }}</h2>
+<div class="d-flex justify-content-center thumb active">
+    <div class="cont-img">
+        <img src="{{ book.picture }}" alt="" class="img-responsive">
+    </div>
+</div>
+<div class="d-flex justify-content-between flex-wrap">
+    <p><b>Author:</b> {{ book.author }}</p>
+    <p><b>Price:</b> € {{ book.price }}</p>
+</div>
+<div class="d-flex justify-content-between">
+    <p>{{ book.description }}</p>
+</div>
+<button type="button" class="btn btn-danger" (click)="onCancel()">Back</button>

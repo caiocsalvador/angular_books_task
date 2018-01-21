@@ -1,0 +1,47 @@
+$main-font: 'Nunito', sans-serif;
+
+a{
+	@include animate(all, 320ms);
+	&:hover,
+	&:before,
+	&:after{
+		@include animate(all, 320ms);
+		text-decoration: none;
+		img{
+			@include animate(all, 320ms);
+		}
+	}
+	img{
+		@include animate(all, 320ms);
+	}
+}
+
+h1, h2, h3, h4, h5{
+	color: $text-color;
+	font-family: $main-font;
+}
+
+p, li, a, span, i, b, time, small, caption{
+	color: $text-color;
+	font-family: $main-font;
+}
+
+i.fa{
+	font-family: FontAwesome !important;
+}
+
+h2{
+    font-size: 2rem;
+}
+h3{
+    font-size: 1.4rem;
+}
+
+.shadow{
+	-webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
+}
+
+
+@include scrollbars(.5em, $blue, rgba(0, 0, 0, 0));

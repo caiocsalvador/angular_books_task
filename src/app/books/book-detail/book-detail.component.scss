@@ -1,0 +1,44 @@
+@import '../../../assets/sass/main';
+
+h2{
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $blue;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+.thumb{
+    width: 100%;
+    margin-bottom: 15px;
+    display: none !important;
+    &.active{
+        display: block !important;
+    }
+}
+.cont-img{
+    width: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        @include animate(all, 320ms);
+        &:hover{
+            opacity: 0.8;
+            @include animate(all, 320ms);
+        }
+    }
+}
+p{
+    text-align: justify;
+    color: $blue;
+    b{
+        color: $blue;
+    }
+}
+button{
+    margin-top: 20px;
+}

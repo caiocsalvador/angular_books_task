@@ -1,0 +1,37 @@
+<div class="cont-table">
+  <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead>
+      <tr>
+        <th>Picture</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; let i = index" [routerLinkActive]="['active']">
+        <td>
+          <div class="cont-img">
+            <img [routerLink]="['/book', book.id]" *ngIf="!book.picture == ''; else elseBlock" src="{{ book.picture }}" alt="">
+            <ng-template #elseBlock>
+              <img [routerLink]="['/book', book.id]" src="https://www.classicposters.com/images/nopicture.gif" alt="">
+            </ng-template>
+          </div>
+        </td>
+        <td [routerLink]="['/book', book.id]">{{ book.title }}</td>
+        <td [routerLink]="['/book', book.id]">€ {{ book.price }}</td>
+        <td>
+          <a [routerLink]="['/book', book.id]" title="View book">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+          <a [routerLink]="['/book', book.id, 'edit']" title="Edit book">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </a>
+          <a (click)="onDelete(book.id)" title="Delete book">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

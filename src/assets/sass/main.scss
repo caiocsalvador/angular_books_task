@@ -1,0 +1,169 @@
+@import "colors";
+@import "mixins";
+@import "generic";
+@import "header";
+@import "responsive";
+
+main{
+    margin-top: 0px;
+}
+
+.cont-book-list{
+    padding: 40px 60px;
+}
+
+.content-container{
+    text-align: center;
+    padding-top: 40px;
+    min-height: calc(100vh - 58px);
+    background: #3ce3c9; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #3ce3c9 0%, #2989d8 47%, #207cca 47%, #2989d8 47%, #2989d8 47%, #7777ff 100%, #7777ff 100%, #207cca 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #3ce3c9 0%,#2989d8 47%,#207cca 47%,#2989d8 47%,#2989d8 47%,#7777ff 100%,#7777ff 100%,#207cca 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #3ce3c9 0%,#2989d8 47%,#207cca 47%,#2989d8 47%,#2989d8 47%,#7777ff 100%,#7777ff 100%,#207cca 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ce3c9', endColorstr='#207cca',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    .main-content{
+        padding: 30px;
+        background-color: $white;
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+}
+
+.flash-message{
+    z-index: 10000;
+    position: absolute;
+    top: 70px;
+    text-align: center;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    background-color: $light-teal;
+    p{
+        color: $blue;
+        font-weight: 700;
+        margin-bottom: 0px;
+    }
+}
+
+input[type=text]{
+    text-align: left !important;
+}
+
+.dataTables_wrapper{
+    .dataTables_length{
+        color: $blue;
+        label{
+            color: $blue;
+            font-size: 0.8rem;
+            select{
+                border-radius: 5px;
+                color: $blue;
+                border: 1px solid #ced4da;
+            }
+        }
+    }
+}
+.dataTables_filter{
+    label{
+        color: $blue;
+        font-size: 0.8rem;
+        input{
+            border-radius: 5px;
+            color: $blue;
+            border: 1px solid #ced4da;
+        }
+    }
+}
+.dataTables_info{
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: $blue !important;
+}
+.paginate_button{
+    color: $blue;
+    font-size: 0.8rem;
+    padding: 5px 8px !important;
+    &:hover{
+        background: none !important;
+        background-color: $blue !important;
+        color: $teal !important;
+        border: none !important;
+    }
+    &.disabled{
+        color: $gray;
+        &:hover{
+            background: none !important;
+            background-color: transparent;
+            color: $gray;
+            border: none !important;
+        }
+    }
+}
+
+table.dataTable thead .sorting{
+    background-image: none;
+    position: relative;
+    &:after{
+        content: "\f0dc"; 
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        font-size: 12px;
+        color: $teal;
+    }
+}
+table.dataTable thead .sorting_asc{
+    background-image: none;
+    position: relative;
+    &:after{
+        content: "\f0de"; 
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        font-size: 12px;
+        color: $teal;
+    }
+}
+table.dataTable thead .sorting_desc{
+    background-image: none;
+    position: relative;
+    &:after{
+        content: "\f0dd"; 
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        font-size: 12px;
+        color: $teal;
+    }
+}
+.dataTables_wrapper{
+    padding: 1px;
+}
+
+@media (max-width: 512px) {
+    .cont-book-list{
+        padding: 15px 0px;
+    }
+    .content-container {
+        padding: 40px 15px;
+        .main-content{
+            padding: 15px;
+        }
+    }
+    .swal2-popup .swal2-styled{
+        padding: .625em 1em !important;
+    }
+}
