@@ -10,16 +10,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let book of books; let i = index" [routerLinkActive]="['active']">
-        <td>
+        <td itemtype="http://schema.org/Book">
           <div class="cont-img">
-            <img [routerLink]="['/book', book.id]" *ngIf="!book.picture == ''; else elseBlock" src="{{ book.picture }}" alt="">
+            <img itemprop="photo" [routerLink]="['/book', book.id]" *ngIf="!book.picture == ''; else elseBlock" src="{{ book.picture }}" alt="">
             <ng-template #elseBlock>
               <img [routerLink]="['/book', book.id]" src="https://www.classicposters.com/images/nopicture.gif" alt="">
             </ng-template>
           </div>
         </td>
-        <td [routerLink]="['/book', book.id]">{{ book.title }}</td>
-        <td [routerLink]="['/book', book.id]">€ {{ book.price }}</td>
+        <td itemprop="name" [routerLink]="['/book', book.id]">{{ book.title }}</td>
+        <td itemprop="price" [routerLink]="['/book', book.id]">€ {{ book.price }}</td>
         <td>
           <a [routerLink]="['/book', book.id]" title="View book">
             <i class="fa fa-eye" aria-hidden="true"></i>

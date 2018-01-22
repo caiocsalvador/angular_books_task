@@ -1,3 +1,4 @@
+// Book Model
 export class Book {
     constructor(
         public id: number,

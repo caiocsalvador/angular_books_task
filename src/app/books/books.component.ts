@@ -4,24 +4,26 @@ import swal from 'sweetalert2';
 
 import { BookService } from './book.service';
 
+// This component has the add book function
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-
-  id: number;
+  // Add book form
   bookForm: FormGroup;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
+    // Configure the form
     this.initForm();
   }
 
+  // Configure the form
   private initForm(){
-
+    // Set the form inputs
     this.bookForm = new FormGroup({
       'title': new FormControl('', Validators.required),
       'picture': new FormControl(''),
@@ -32,9 +34,13 @@ export class BooksComponent implements OnInit {
 
   }
 
+  // When the form is submited
   onSubmit(){
+    // Add a new book
     this.bookService.addBook(this.bookForm.value);
+    // Success message
     swal('Successs', 'Book added!', 'success');
+    // Reset form
     this.initForm();
   }
 

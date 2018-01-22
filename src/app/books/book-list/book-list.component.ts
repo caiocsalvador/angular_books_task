@@ -16,9 +16,13 @@ import { BookService } from './../book.service';
 })
 export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
 
+  // Book ID for Delete function
   id: number;
+  // Books array
   books: Book[];
+  // Subscription that checks every time that the books array changes
   subscription: Subscription;
+  // Datatable variables
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   @ViewChild(DataTableDirective)
@@ -31,19 +35,17 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = +params['id'];
-      }
-    );
 
+    // Get books when the component init
     this.books = this.bookService.getBooks();
 
+    // Datatable options
     this.dtOptions = {
       pagingType: 'simple',
       pageLength: 8
     };
 
+    // Subscription that checks every time that the books array changes
     this.subscription = this.bookService.booksChanged.subscribe(
       (books: Book[]) => {
         this.books = books;
@@ -52,10 +54,12 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
     );
   }
 
+  // After the view inits, render the datatable
   ngAfterViewInit(){
     this.dtTrigger.next();
   }
 
+  // When books array changes, rerender the datatable
   rerender(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       // Destroy the table first
@@ -65,7 +69,9 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
     });
   }
 
+  // When the user clicks on the delete button/icon
   onDelete(id: number){
+    // Sweet alert confirm, asking if the user is sure to delete
     swal({
       title: 'Are you sure?',
       text: 'You will not be able to recover this book!',
@@ -75,8 +81,11 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
+        // If confirmed delete the book
         this.bookService.deleteBook(id);
+        // Navigate to the root
         this.router.navigate(['./']);
+        // Show success message
         swal(
           'Deleted!',
           'Book deleted.',
@@ -84,6 +93,7 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
         );
         // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
       } else if (result.dismiss === 'cancel') {
+        // Show canceled message
         swal(
           'Cancelled',
           'Your book is safe :)',
@@ -93,6 +103,7 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit  {
     });
   }
 
+  // Whether the component is destroyed, unsubscribe for the array changes
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }

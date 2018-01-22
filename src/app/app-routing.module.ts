@@ -5,6 +5,7 @@ import { BooksComponent } from './books/books.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 
+// App routes
 const appRoutes: Routes = [
     { path: '', component: BooksComponent },
     { path: 'book/:id', component: BookDetailComponent },

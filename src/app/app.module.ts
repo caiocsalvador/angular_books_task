@@ -6,12 +6,13 @@ import { DataTablesModule } from 'angular-datatables';
 import { BookService } from './books/book.service';
 
 import { AppComponent } from './app.component';
+// App routes
 import { AppRoutingModule } from './app-routing.module';
+// App components
 import { BooksComponent } from './books/books.component';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
-
 
 @NgModule({
   declarations: [

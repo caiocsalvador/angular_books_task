@@ -21,7 +21,9 @@ export class BookDetailComponent implements OnInit {
     private router: Router
   ) {
     router.events.subscribe((val) => {
-      this.anchor.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.innerWidth < 768) {
+        this.anchor.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   }
 

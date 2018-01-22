@@ -5,8 +5,10 @@ import { Book } from './book.model';
 
 @Injectable()
 export class BookService{
+    // This Subject will aways report when the books array change
     booksChanged = new Subject<Book[]>();
 
+    // Sample books array
     private books: Book[] = [
         new Book(
             1,
@@ -34,36 +36,48 @@ export class BookService{
         )
     ];
 
-
+    // Set Books
     setBooks(books: Book[]){
         this.books = books;
         this.booksChanged.next(this.books.slice().reverse());
     }
 
+    // Get all books
     getBooks(){
         return this.books.slice().reverse();
     }
 
+    // Get a single book by id
     getBook(id: number){
         let book: Book;
         book = this.books.find(x => x.id === id);
         return book;
     }
 
+    // Add a book
     addBook(book: Book){
-        book.id = this.books.length + 1;
+        // Check the last book added to create a new ID for the new one.
+        const lastAddedBook = this.books[this.books.length - 1];
+        book.id = lastAddedBook.id + 1;
+        // Push the new book into the array
         this.books.push(book);
         this.booksChanged.next(this.books.slice().reverse());
     }
 
+    // Update a book
     updateBook(id: number, newBook: Book){
+        // Get the index of the book in array by the book id
         const index = this.books.findIndex(x => x.id === id);
+        // Insert the new values
         this.books[index] = newBook;
         this.booksChanged.next(this.books.slice().reverse());
     }
 
+    // Delete a book
     deleteBook(id: number) {
+        // Get the index of the book in array by the book id
         const index = this.books.findIndex(x => x.id === id);
+        // Remove from the array
         this.books.splice(index, 1);
         this.booksChanged.next(this.books.slice().reverse());
     }

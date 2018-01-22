@@ -1,14 +1,16 @@
-<h2 #anchor>{{ book.title }}</h2>
-<div class="d-flex justify-content-center thumb active">
-    <div class="cont-img">
-        <img src="{{ book.picture }}" alt="" class="img-responsive">
+<article itemscope itemtype="http://schema.org/Book">
+    <h2 #anchor itemprop="name">{{ book.title }}</h2>
+    <div class="d-flex justify-content-center thumb active">
+        <div class="cont-img">
+            <img itemprop="photo" src="{{ book.picture }}" alt="" class="img-responsive">
+        </div>
     </div>
-</div>
-<div class="d-flex justify-content-between flex-wrap">
-    <p><b>Author:</b> {{ book.author }}</p>
-    <p><b>Price:</b> € {{ book.price }}</p>
-</div>
-<div class="d-flex justify-content-between">
-    <p>{{ book.description }}</p>
-</div>
-<button type="button" class="btn btn-danger" (click)="onCancel()">Back</button>
+    <div class="d-flex justify-content-between flex-wrap">
+        <p itemprop="author"><b>Author:</b> {{ book.author }}</p>
+        <p itemprop="price"><b>Price:</b> € {{ book.price }}</p>
+    </div>
+    <div class="d-flex justify-content-between">
+        <p itemprop="description">{{ book.description }}</p>
+    </div>
+    <button type="button" class="btn btn-danger" (click)="onCancel()">Back</button>
+</article>
